@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Proyecto educativo interactivo para aprender seguridad básica en sistemas de inteligencia artificial, LLM, RAG, agentes, datos, controles y referencias oficiales.">
+  <meta name="theme-color" content="#2b2d42">
+  <title>Basic Seguridad IA | Curso interactivo</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/cytoscape@3.34.1/dist/cytoscape.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Saltar al contenido</a>
+
+  <header class="site-header">
+    <nav class="nav-shell" aria-label="Navegación principal">
+      <a class="brand" href="#top" aria-label="Ir al inicio">
+        <span class="brand-mark">AI</span>
+        <span>Basic Seguridad IA</span>
+      </a>
+      <div class="nav-links">
+        <a href="#mapa">Mapa</a>
+        <a href="#riesgos">Riesgos</a>
+        <a href="#lab">Lab</a>
+        <a href="#controles">Controles</a>
+        <a href="#checklist">Checklist</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#refs">Refs</a>
+      </div>
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Cambiar tema" aria-pressed="false">
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__knob"></span>
+        </span>
+      </button>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">IA segura desde la base</p>
+        <h1 id="hero-title">Seguridad IA sin humo</h1>
+        <p class="hero-lede">Aprende a proteger datos, prompts, modelos, RAG, agentes y herramientas.</p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#mapa">Explorar mapa</a>
+          <a class="button button-secondary" href="#lab">Abrir lab</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <img src="assets/ai-security-system-map.png" width="1672" height="941" alt="Ilustración técnica de un sistema de inteligencia artificial conectado con datos, usuarios, herramientas, evaluación y monitorización.">
+        <article class="hero-card">
+          <span>Modelo mental</span>
+          <strong>Un sistema IA es software, datos, decisiones y permisos trabajando juntos.</strong>
+          <p>La seguridad aparece cuando cada pieza tiene límites claros, pruebas y trazabilidad.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="study-strip" aria-label="Ideas clave">
+      <article>
+        <span>4</span>
+        <p>Funciones NIST AI RMF: gobernar, mapear, medir y gestionar.</p>
+      </article>
+      <article>
+        <span>12</span>
+        <p>Familias AISVS para verificar sistemas IA de forma técnica.</p>
+      </article>
+      <article>
+        <span>0</span>
+        <p>Secretos dentro del prompt. Las claves viven fuera del contexto del modelo.</p>
+      </article>
+    </section>
+
+    <section class="map-zone section-reveal" id="mapa" aria-labelledby="mapa-title">
+      <div class="section-heading">
+        <h2 id="mapa-title">Mapa de seguridad IA</h2>
+        <p>Relaciona activos, amenazas y controles sin necesitar servidor ni base de datos.</p>
+      </div>
+      <div class="map-workbench">
+        <div class="concept-map" id="conceptMap" role="img" aria-label="Grafo interactivo de seguridad IA"></div>
+        <aside class="map-detail" aria-live="polite">
+          <span class="detail-kicker" id="selectedType">Activo</span>
+          <h3 id="selectedTitle">Sistema IA</h3>
+          <p class="detail-lede" id="selectedDescription">Selecciona un nodo para ver riesgos, controles y referencias relacionadas.</p>
+          <ul class="detail-list" id="selectedDetails"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="risk-zone section-reveal" id="riesgos" aria-labelledby="riesgos-title">
+      <div class="section-heading">
+        <h2 id="riesgos-title">Riesgos que conviene nombrar</h2>
+        <p>El primer paso defensivo es distinguir qué puede fallar y dónde se materializa.</p>
+      </div>
+      <div class="risk-tools" id="riskFilters" aria-label="Filtros de riesgos"></div>
+      <div class="risk-grid" id="riskGrid"></div>
+    </section>
+
+    <section class="lab-zone section-reveal" id="lab" aria-labelledby="lab-title">
+      <div class="section-heading">
+        <h2 id="lab-title">Laboratorio de exposición</h2>
+        <p>Configura un caso de uso y observa cómo cambian el riesgo y los controles prioritarios.</p>
+      </div>
+      <div class="lab-layout">
+        <form class="lab-panel" id="riskLab">
+          <label>
+            Datos usados
+            <select id="dataProfile">
+              <option value="public">Públicos o de prueba</option>
+              <option value="internal">Internos de negocio</option>
+              <option value="personal">Personales o sensibles</option>
+            </select>
+          </label>
+          <label>
+            Fuente de contexto
+            <select id="contextProfile">
+              <option value="none">Sin RAG ni memoria</option>
+              <option value="curated">RAG curado y versionado</option>
+              <option value="open">RAG abierto o conectores externos</option>
+            </select>
+          </label>
+          <label>
+            Acciones del sistema
+            <select id="actionProfile">
+              <option value="answer">Solo responde</option>
+              <option value="suggest">Sugiere cambios</option>
+              <option value="execute">Ejecuta herramientas</option>
+            </select>
+          </label>
+          <label>
+            Supervisión
+            <select id="oversightProfile">
+              <option value="strong">Aprobación humana y logs</option>
+              <option value="partial">Logs parciales</option>
+              <option value="weak">Sin revisión definida</option>
+            </select>
+          </label>
+        </form>
+        <aside class="lab-result" aria-live="polite">
+          <span class="detail-kicker">Lectura del caso</span>
+          <h3 id="labLevel">Riesgo bajo</h3>
+          <p id="labSummary">Caso controlado con datos públicos y sin acciones externas.</p>
+          <div class="lab-meter" aria-hidden="true">
+            <span id="labMeterFill"></span>
+          </div>
+          <ul class="detail-list" id="labControls"></ul>
+        </aside>
+      </div>
+    </section>
+
+    <section class="control-zone section-reveal" id="controles" aria-labelledby="controls-title">
+      <div class="section-heading">
+        <h2 id="controls-title">Controles por ciclo de vida</h2>
+        <p>La seguridad se reparte entre diseño, datos, modelo, integración, despliegue y operación.</p>
+      </div>
+      <div class="lifecycle" id="lifecycle"></div>
+    </section>
+
+    <section class="checklist-zone section-reveal" id="checklist" aria-labelledby="checklist-title">
+      <div class="section-heading">
+        <h2 id="checklist-title">Checklist mínima</h2>
+        <p>Una guía de revisión para prototipos, asistentes internos y primeras integraciones con LLM.</p>
+      </div>
+      <div class="checklist-layout">
+        <div class="checklist" id="checklistItems"></div>
+        <aside class="progress-card" aria-live="polite">
+          <span class="detail-kicker">Progreso</span>
+          <strong id="checkProgress">0 de 10</strong>
+          <p id="checkMessage">Empieza por inventario, datos y permisos.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="quiz-zone section-reveal" id="quiz" aria-labelledby="quiz-title">
+      <div class="section-heading">
+        <h2 id="quiz-title">Quiz rápido</h2>
+        <p>Comprueba si reconoces el control adecuado para cada riesgo.</p>
+      </div>
+      <article class="quiz-card" id="quizCard" aria-live="polite"></article>
+    </section>
+
+    <section class="refs-zone section-reveal" id="refs" aria-labelledby="refs-title">
+      <div class="section-heading">
+        <h2 id="refs-title">Referencias oficiales</h2>
+        <p>Fuentes primarias para profundizar en seguridad, gobernanza y verificación de sistemas IA.</p>
+      </div>
+      <div class="reference-tools">
+        <label class="reference-search">
+          Buscar referencia
+          <input id="referenceSearch" type="search" placeholder="NIST, OWASP, ATLAS, ISO..." autocomplete="off">
+        </label>
+        <div class="reference-filters" id="referenceFilters" aria-label="Filtrar referencias"></div>
+      </div>
+      <div class="reference-grid" id="referenceGrid"></div>
+    </section>
+
+    <section class="glossary section-reveal" aria-labelledby="glossary-title">
+      <div class="section-heading">
+        <h2 id="glossary-title">Glosario esencial</h2>
+        <p>Términos básicos para leer documentación técnica sin perder el hilo.</p>
+      </div>
+      <div class="glossary-list">
+        <details>
+          <summary>Prompt injection</summary>
+          <p>Entrada maliciosa que intenta cambiar las instrucciones efectivas del modelo o del sistema que lo rodea.</p>
+        </details>
+        <details>
+          <summary>RAG</summary>
+          <p>Arquitectura que añade contexto externo al prompt desde documentos, bases vectoriales u otras fuentes.</p>
+        </details>
+        <details>
+          <summary>Agente</summary>
+          <p>Sistema IA que puede planificar pasos, usar herramientas y actuar sobre aplicaciones o datos.</p>
+        </details>
+        <details>
+          <summary>Evaluación</summary>
+          <p>Prueba repetible que mide comportamiento, seguridad, calidad o cumplimiento antes y después de cambios.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Proyecto estático preparado para GitHub Pages en el repositorio pedri77/Basic_Seguridad_IA.</p>
+    <a href="https://github.com/pedri77/Basic_Seguridad_IA" rel="noreferrer">Repositorio</a>
+  </footer>
+</body>
+</html>
