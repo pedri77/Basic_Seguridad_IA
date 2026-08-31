@@ -279,6 +279,7 @@ img {
 .risk-zone,
 .lab-zone,
 .control-zone,
+.compliance-zone,
 .checklist-zone,
 .quiz-zone,
 .refs-zone,
@@ -447,6 +448,7 @@ img {
 .risk-zone,
 .lab-zone,
 .control-zone,
+.compliance-zone,
 .checklist-zone,
 .quiz-zone,
 .refs-zone,
@@ -469,6 +471,7 @@ img {
 
 .map-workbench,
 .lab-layout,
+.compliance-layout,
 .checklist-layout {
   display: grid;
   grid-template-columns: minmax(390px, 1.12fr) minmax(320px, 0.88fr);
@@ -480,6 +483,7 @@ img {
 .map-detail,
 .lab-panel,
 .lab-result,
+.compliance-detail,
 .progress-card,
 .quiz-card {
   border: 1px solid var(--line);
@@ -530,6 +534,7 @@ img {
 
 .map-detail,
 .lab-result,
+.compliance-detail,
 .progress-card,
 .quiz-card {
   display: grid;
@@ -548,6 +553,8 @@ img {
 .detail-list,
 .risk-card p,
 .lifecycle-card p,
+.compliance-card small,
+.compliance-note,
 .reference-card p,
 .progress-card p,
 .quiz-feedback,
@@ -726,6 +733,88 @@ input::placeholder {
   font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
   font-size: 0.75rem;
   font-weight: 900;
+}
+
+.compliance-board {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.compliance-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-width: 0;
+  min-height: 178px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  overflow-wrap: anywhere;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background 160ms ease;
+}
+
+.compliance-card:hover,
+.compliance-card.is-active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent-soft) 44%, var(--surface));
+}
+
+.compliance-card:active {
+  transform: translateY(1px);
+}
+
+.compliance-card header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px;
+  color: var(--muted);
+  font-family: ui-monospace, "SFMono-Regular", Consolas, monospace;
+  font-size: 0.74rem;
+  font-weight: 900;
+}
+
+.compliance-card strong {
+  font-size: 1.08rem;
+  line-height: 1.18;
+}
+
+.compliance-card small {
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.compliance-detail {
+  min-width: 0;
+}
+
+.compliance-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.compliance-tags span {
+  padding: 7px 9px;
+  border: 1px solid color-mix(in srgb, var(--accent) 32%, var(--line));
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--bg) 50%, var(--surface));
+  color: var(--text);
+  font-size: 0.84rem;
+  font-weight: 780;
+}
+
+.compliance-note {
+  padding-top: 6px;
+  font-size: 0.92rem;
 }
 
 .checklist {
@@ -926,6 +1015,7 @@ details p {
 
   .map-workbench,
   .lab-layout,
+  .compliance-layout,
   .checklist-layout,
   .reference-tools {
     grid-template-columns: 1fr;
@@ -990,6 +1080,7 @@ details p {
   .risk-zone,
   .lab-zone,
   .control-zone,
+  .compliance-zone,
   .checklist-zone,
   .quiz-zone,
   .refs-zone,
@@ -1019,6 +1110,7 @@ details p {
   .study-strip,
   .risk-grid,
   .lifecycle,
+  .compliance-board,
   .reference-grid,
   .glossary-list {
     grid-template-columns: 1fr;

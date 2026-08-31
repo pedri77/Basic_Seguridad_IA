@@ -231,7 +231,11 @@ const checklist = [
   "La salida del modelo se valida antes de renderizar, ejecutar o almacenar.",
   "Hay pruebas contra prompt injection, fuga de datos y errores de autorización.",
   "Los logs minimizan contenido sensible y permiten investigar abuso.",
-  "Los cambios de modelo, prompt o dataset tienen evaluación y rollback."
+  "Los cambios de modelo, prompt o dataset tienen evaluación y rollback.",
+  "Se ha clasificado el sistema según el AI Act y se han identificado roles y obligaciones.",
+  "Si hay datos personales, existen base jurídica, minimización, información y posible EIPD.",
+  "Si aplica ENS, NIS2 o ciberresiliencia, los controles se trazan a requisitos concretos.",
+  "Las personas reciben aviso claro cuando interactúan con IA o contenido generado."
 ];
 
 const references = [
@@ -304,6 +308,198 @@ const references = [
     organization: "OWASP",
     summary: "Documento de concienciación sobre riesgos críticos de seguridad en aplicaciones web.",
     url: "https://owasp.org/Top10/"
+  },
+  {
+    title: "Reglamento (UE) 2024/1689 de Inteligencia Artificial",
+    category: "Normativa UE",
+    organization: "UE",
+    summary: "Marco europeo de IA con reglas por nivel de riesgo, prácticas prohibidas, transparencia y obligaciones para modelos de propósito general.",
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81079&lang=es"
+  },
+  {
+    title: "AI Act: calendario de aplicación",
+    category: "Normativa UE",
+    organization: "Comisión Europea",
+    summary: "Resumen oficial de la entrada en vigor, aplicación por fases y obligaciones de transparencia del Reglamento Europeo de IA.",
+    url: "https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai"
+  },
+  {
+    title: "Reglamento General de Protección de Datos",
+    category: "Normativa UE",
+    organization: "UE",
+    summary: "Marco europeo para tratamientos de datos personales, relevante para prompts, RAG, logs, entrenamiento, evaluación y perfiles de usuario.",
+    url: "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+  },
+  {
+    title: "LOPDGDD Ley Orgánica 3/2018",
+    category: "Normativa España",
+    organization: "BOE",
+    summary: "Norma española que adapta el RGPD y garantiza derechos digitales en tratamientos de datos personales.",
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673"
+  },
+  {
+    title: "Guías AEPD sobre IA y protección de datos",
+    category: "Guías oficiales",
+    organization: "AEPD",
+    summary: "Guías y criterios sobre auditoría, minimización, exactitud, transparencia y responsabilidad en tratamientos con IA.",
+    url: "https://www.aepd.es/guias-y-herramientas/guias"
+  },
+  {
+    title: "ENS Real Decreto 311/2022",
+    category: "Normativa España",
+    organization: "BOE",
+    summary: "Esquema Nacional de Seguridad para sistemas del sector público y servicios relacionados con administración digital.",
+    url: "https://boe.es/buscar/act.php?id=BOE-A-2022-7191&lang=es&p=20241106&tn=6"
+  },
+  {
+    title: "AESIA Real Decreto 729/2023",
+    category: "Normativa España",
+    organization: "BOE",
+    summary: "Estatuto de la Agencia Española de Supervisión de Inteligencia Artificial y sus funciones de supervisión, asesoramiento y coordinación.",
+    url: "https://www.boe.es/eli/es/rd/2023/08/22/729"
+  },
+  {
+    title: "Directiva SRI 2 NIS2",
+    category: "Normativa UE",
+    organization: "UE",
+    summary: "Directiva europea de ciberseguridad para entidades esenciales e importantes, con obligaciones de gestión de riesgos e incidentes.",
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2022-81963"
+  },
+  {
+    title: "Reglamento de Ciberresiliencia",
+    category: "Normativa UE",
+    organization: "UE",
+    summary: "Requisitos horizontales de ciberseguridad para productos con elementos digitales, incluido software puesto en el mercado.",
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81720"
+  },
+  {
+    title: "CCN-STIC 884D servicios de IA",
+    category: "Guías oficiales",
+    organization: "CCN-CERT",
+    summary: "Guía técnica de configuración segura para servicios de IA dentro de la serie CCN-STIC 800 vinculada al ENS.",
+    url: "https://www.ccn-cert.cni.es/es/pdf/guias/series-ccn-stic/800-guia-esquema-nacional-de-seguridad?format=html&limit=25&limitstart=125"
+  },
+  {
+    title: "UNE-ISO/IEC 42001:2025",
+    category: "Estándares",
+    organization: "UNE",
+    summary: "Adopción española de la norma ISO/IEC 42001 para sistemas de gestión de inteligencia artificial.",
+    url: "https://revista.une.org/81/tecnologia-de-la-informacion.-inteligencia-artificial.-siste.html"
+  }
+];
+
+const complianceFrameworks = [
+  {
+    id: "ai-act",
+    title: "Reglamento Europeo de IA",
+    scope: "UE",
+    status: "En vigor desde el 1 de agosto de 2024. Aplicación general desde el 2 de agosto de 2026.",
+    summary: "Ordena el uso de IA por niveles de riesgo y marca obligaciones para proveedores, distribuidores, importadores y responsables del despliegue.",
+    obligations: [
+      "Clasificar el sistema por riesgo y por rol antes de desplegarlo.",
+      "Evitar prácticas prohibidas y revisar si el caso entra en alto riesgo.",
+      "Informar cuando una persona interactúa con IA o recibe contenido generado o modificado con IA.",
+      "En modelos de propósito general, preparar documentación, información para integradores, resumen de datos de entrenamiento y seguridad."
+    ],
+    tags: ["Riesgo", "Transparencia", "GPAI", "Derechos fundamentales"],
+    relatedNodes: ["system", "model", "monitoring", "overreliance", "control-politica-de-uso", "control-inventario-ia", "control-revision-humana"],
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81079&lang=es"
+  },
+  {
+    id: "rgpd-lopdgdd",
+    title: "RGPD y LOPDGDD",
+    scope: "UE y España",
+    status: "RGPD aplicable desde el 25 de mayo de 2018. LOPDGDD en vigor desde el 7 de diciembre de 2018.",
+    summary: "Se activa cuando prompts, documentos RAG, logs, evaluaciones o entrenamiento tratan datos personales.",
+    obligations: [
+      "Definir base jurídica, finalidad, minimización, retención y responsables del tratamiento.",
+      "Aplicar privacidad desde el diseño y por defecto en prompts, RAG, logs y salidas.",
+      "Facilitar derechos de las personas y explicar decisiones automatizadas cuando corresponda.",
+      "Valorar una evaluación de impacto cuando el tratamiento pueda implicar alto riesgo para derechos y libertades."
+    ],
+    tags: ["Datos personales", "Privacidad", "EIPD", "Derechos"],
+    relatedNodes: ["data", "prompt", "monitoring", "data-disclosure", "control-clasificar-datos", "control-minimizacion", "control-redactar-logs", "control-controlar-rag-por-identidad"],
+    url: "https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673"
+  },
+  {
+    id: "aepd",
+    title: "Guías y criterios AEPD",
+    scope: "España",
+    status: "Documentación viva de la autoridad española de protección de datos.",
+    summary: "Aterriza el RGPD en sistemas IA con criterios sobre auditoría, calidad de datos, exactitud, minimización y agentes.",
+    obligations: [
+      "Auditar tratamientos IA con objetivos de control, evidencias y responsabilidad activa.",
+      "Revisar calidad, exactitud e idoneidad de los datos usados por el sistema.",
+      "No introducir datos personales o información delicada en herramientas IA sin necesidad y garantías.",
+      "Separar guía ciudadana, criterio jurídico y obligación legal antes de convertirlo en requisito."
+    ],
+    tags: ["AEPD", "Auditoría", "Calidad de datos", "Minimización"],
+    relatedNodes: ["data-disclosure", "overreliance", "control-evaluacion-continua", "control-revision-humana", "control-pruebas-aisvs"],
+    url: "https://www.aepd.es/guias-y-herramientas/guias"
+  },
+  {
+    id: "ens",
+    title: "Esquema Nacional de Seguridad",
+    scope: "España",
+    status: "Real Decreto 311/2022 en vigor desde el 5 de mayo de 2022.",
+    summary: "Referencia obligada para sector público y proveedores vinculados a servicios públicos digitales.",
+    obligations: [
+      "Categorizar el sistema y aplicar medidas según riesgo, servicio, información y exposición.",
+      "Mantener política de seguridad, responsables, análisis de riesgos y mejora continua.",
+      "Proteger identidad, trazabilidad, continuidad, configuración segura y cadena de suministro.",
+      "Usar guías CCN-STIC cuando se necesite aterrizar configuración y evidencias."
+    ],
+    tags: ["Sector público", "Medidas ENS", "CCN-STIC", "Trazabilidad"],
+    relatedNodes: ["system", "identity", "tools", "monitoring", "supply-chain", "control-modelo-de-responsabilidad", "control-gestion-de-claves", "control-alertas"],
+    url: "https://boe.es/buscar/act.php?id=BOE-A-2022-7191&lang=es&p=20241106&tn=6"
+  },
+  {
+    id: "aesia",
+    title: "AESIA",
+    scope: "España",
+    status: "Creada por el Real Decreto 729/2023, publicado el 2 de septiembre de 2023.",
+    summary: "Autoridad española de supervisión de IA, con funciones de asesoramiento, concienciación, coordinación, inspección y sanción cuando proceda.",
+    obligations: [
+      "Identificar qué autoridad o autoridades pueden supervisar el caso de uso.",
+      "Preparar evidencias de gobernanza, controles, trazabilidad y evaluación.",
+      "Considerar entornos de prueba y certificaciones voluntarias si el proyecto lo requiere.",
+      "Coordinar IA, protección de datos, ciberseguridad y sector regulado en una sola lectura de riesgo."
+    ],
+    tags: ["Supervisión", "Evidencias", "Sandbox", "Coordinación"],
+    relatedNodes: ["system", "overreliance", "control-politica-de-uso", "control-inventario-ia", "control-evaluacion-continua"],
+    url: "https://www.boe.es/eli/es/rd/2023/08/22/729"
+  },
+  {
+    id: "nis2",
+    title: "Directiva SRI 2 NIS2",
+    scope: "UE",
+    status: "Directiva (UE) 2022/2555, vigente como marco europeo de ciberseguridad.",
+    summary: "Afecta a entidades esenciales o importantes, con foco en gestión de riesgos, incidentes, continuidad y proveedores.",
+    obligations: [
+      "Revisar si el sector entra en entidades esenciales o importantes.",
+      "Documentar medidas de gestión de riesgos de ciberseguridad y continuidad.",
+      "Preparar detección, gestión y notificación de incidentes cuando aplique.",
+      "Controlar cadena de suministro, proveedores, identidad y accesos."
+    ],
+    tags: ["Ciberseguridad", "Incidentes", "Proveedores", "Continuidad"],
+    relatedNodes: ["supply-chain", "identity", "monitoring", "control-revision-de-proveedores", "control-deteccion-de-abuso", "control-trazabilidad-de-api", "control-alertas"],
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2022-81963"
+  },
+  {
+    id: "cra",
+    title: "Reglamento de Ciberresiliencia",
+    scope: "UE",
+    status: "Reglamento (UE) 2024/2847, con aplicación escalonada desde 2026 y aplicación principal desde el 11 de diciembre de 2027.",
+    summary: "Afecta a productos con elementos digitales y exige seguridad por diseño, gestión de vulnerabilidades e información para usuarios.",
+    obligations: [
+      "Identificar si el sistema IA se comercializa como producto con elementos digitales.",
+      "Incorporar requisitos de ciberseguridad desde el diseño y durante el ciclo de vida.",
+      "Mantener gestión de vulnerabilidades, actualizaciones y comunicación a usuarios.",
+      "Conectar dependencias, modelos, librerías y APIs con inventario y respuesta ante cambios."
+    ],
+    tags: ["Producto digital", "Vulnerabilidades", "Seguridad por diseño", "Soporte"],
+    relatedNodes: ["supply-chain", "model", "tools", "control-inventario-de-componentes", "control-firmas-y-procedencia", "control-revision-de-dependencias", "control-pruebas-de-regresion"],
+    url: "https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81720"
   }
 ];
 
@@ -331,6 +527,12 @@ const quiz = [
     options: ["Medir y gestionar riesgos de forma continua", "Confiar siempre en la primera respuesta", "Evitar cualquier registro", "Usar un único prompt para todo"],
     answer: "Medir y gestionar riesgos de forma continua",
     reason: "El AI RMF organiza la gestión en gobernar, mapear, medir y gestionar."
+  },
+  {
+    question: "¿Qué marco debes revisar si un sistema IA usa datos personales en prompts, logs o RAG?",
+    options: ["RGPD y LOPDGDD", "Solo el README del modelo", "La paleta de colores", "El tamaño de la ventana"],
+    answer: "RGPD y LOPDGDD",
+    reason: "El tratamiento de datos personales exige base jurídica, minimización, información, derechos y control del riesgo."
   },
   {
     question: "¿Qué verifica mejor una salida generada antes de usarla como código, HTML o consulta?",
@@ -366,6 +568,7 @@ const labProfiles = {
 let selectedNodeId = "system";
 let selectedRiskCategory = "Todos";
 let selectedReferenceCategory = "Todas";
+let selectedComplianceId = "ai-act";
 let quizIndex = 0;
 let answered = false;
 let quizScore = 0;
@@ -391,7 +594,8 @@ function palette() {
     asset: resolveCssColor("var(--palette-ink)"),
     threat: resolveCssColor("var(--palette-red)"),
     control: resolveCssColor("var(--palette-muted)"),
-    reference: resolveCssColor("var(--palette-red-deep)")
+    reference: resolveCssColor("var(--palette-red-deep)"),
+    compliance: resolveCssColor("var(--palette-muted)")
   };
 }
 
@@ -434,6 +638,16 @@ function graphNodes() {
     url: reference.url
   }));
 
+  const complianceNodes = complianceFrameworks.map((framework) => ({
+    id: `law-${framework.id}`,
+    label: framework.scope,
+    kind: "compliance",
+    type: "Marco legal",
+    description: framework.title,
+    details: [framework.status, framework.summary, ...framework.obligations],
+    url: framework.url
+  }));
+
   return [
     ...assets.map((asset) => ({ ...asset, kind: "asset" })),
     ...threats.map((threat) => ({
@@ -445,6 +659,7 @@ function graphNodes() {
       details: [threat.impact, `Categoría: ${threat.category}`, `Severidad: ${threat.severity}`]
     })),
     ...dedupeById([...lifecycleControlNodes, ...threatControlNodes]),
+    ...complianceNodes,
     ...referenceNodes
   ];
 }
@@ -463,13 +678,30 @@ function graphEdges() {
     });
   });
 
+  complianceFrameworks.forEach((framework) => {
+    framework.relatedNodes.forEach((target) => {
+      edges.push({ source: `law-${framework.id}`, target, label: "aplica a" });
+    });
+  });
+
   const referenceLinks = [
     ["ref-nist-ai-risk-management-framework", "system"],
     ["ref-owasp-genai-llm-top-10-2026", "prompt-injection"],
     ["ref-owasp-aisvs-1-0", "excessive-agency"],
     ["ref-mitre-atlas", "rag-poisoning"],
     ["ref-guidelines-for-secure-ai-system-development", "supply-chain"],
-    ["ref-nist-ai-600-1", "data-disclosure"]
+    ["ref-nist-ai-600-1", "data-disclosure"],
+    ["ref-reglamento-ue-2024-1689-de-inteligencia-artificial", "law-ai-act"],
+    ["ref-ai-act-calendario-de-aplicacion", "law-ai-act"],
+    ["ref-reglamento-general-de-proteccion-de-datos", "law-rgpd-lopdgdd"],
+    ["ref-lopdgdd-ley-organica-3-2018", "law-rgpd-lopdgdd"],
+    ["ref-guias-aepd-sobre-ia-y-proteccion-de-datos", "law-aepd"],
+    ["ref-ens-real-decreto-311-2022", "law-ens"],
+    ["ref-aesia-real-decreto-729-2023", "law-aesia"],
+    ["ref-directiva-sri-2-nis2", "law-nis2"],
+    ["ref-reglamento-de-ciberresiliencia", "law-cra"],
+    ["ref-ccn-stic-884d-servicios-de-ia", "law-ens"],
+    ["ref-une-iso-iec-42001-2025", "system"]
   ];
 
   referenceLinks.forEach(([source, target]) => edges.push({ source, target, label: "referencia" }));
@@ -602,6 +834,17 @@ function graphStyle() {
       }
     },
     {
+      selector: ".type-compliance",
+      style: {
+        "background-color": colors.surface,
+        color: colors.text,
+        "font-size": 11,
+        height: 58,
+        shape: "diamond",
+        width: 108
+      }
+    },
+    {
       selector: "edge",
       style: {
         "curve-style": "bezier",
@@ -645,7 +888,7 @@ function graphStyle() {
 }
 
 function renderGraphFallback(container) {
-  const nodes = graphNodes().filter((node) => node.kind === "asset" || node.kind === "threat");
+  const nodes = graphNodes().filter((node) => ["asset", "threat", "compliance"].includes(node.kind));
   container.classList.add("is-fallback");
   container.innerHTML = nodes
     .map(
@@ -788,6 +1031,42 @@ function renderLifecycle() {
       `
     )
     .join("");
+}
+
+function renderCompliance() {
+  const active = complianceFrameworks.find((framework) => framework.id === selectedComplianceId) || complianceFrameworks[0];
+
+  byId("complianceBoard").innerHTML = complianceFrameworks
+    .map(
+      (framework) => `
+        <button class="compliance-card${framework.id === active.id ? " is-active" : ""}" type="button" data-compliance="${framework.id}">
+          <header>
+            <span>${framework.scope}</span>
+            <span>${framework.tags[0]}</span>
+          </header>
+          <strong>${framework.title}</strong>
+          <small>${framework.status}</small>
+        </button>
+      `
+    )
+    .join("");
+
+  byId("complianceScope").textContent = active.scope;
+  byId("complianceTitle").textContent = active.title;
+  byId("complianceSummary").textContent = active.summary;
+  byId("complianceObligations").innerHTML = active.obligations.map((obligation) => `<li>${obligation}</li>`).join("");
+  byId("complianceTags").innerHTML = active.tags.map((tag) => `<span>${tag}</span>`).join("");
+  byId("complianceSource").href = active.url;
+
+  byId("complianceBoard").querySelectorAll("[data-compliance]").forEach((button) => {
+    button.addEventListener("click", () => selectCompliance(button.dataset.compliance));
+  });
+}
+
+function selectCompliance(frameworkId) {
+  selectedComplianceId = frameworkId;
+  renderCompliance();
+  selectNode(`law-${frameworkId}`);
 }
 
 function renderChecklist() {
@@ -988,6 +1267,7 @@ function init() {
   renderRisks();
   renderLab();
   renderLifecycle();
+  renderCompliance();
   renderChecklist();
   renderQuiz();
   renderReferenceFilters();

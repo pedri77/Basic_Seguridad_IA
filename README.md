@@ -30,6 +30,7 @@ Basic_Seguridad_IA/
 - Filtros de riesgos por entrada, datos, RAG, agentes, aplicación, operación y gobernanza.
 - Laboratorio de exposición para valorar un caso según datos, contexto, acciones y supervisión.
 - Controles por ciclo de vida: gobernanza, datos, diseño, construcción, despliegue y operación.
+- Marco UE y España con AI Act, RGPD, LOPDGDD, AEPD, ENS, AESIA, NIS2 y ciberresiliencia.
 - Checklist mínima persistente en el navegador.
 - Quiz autocorregido con explicación inmediata.
 - Glosario esencial y referencias oficiales.
@@ -89,6 +90,17 @@ En GitHub:
 - ISO/IEC 42001:2023: https://www.iso.org/es/norma/42001
 - NIST SP 800-218 SSDF: https://csrc.nist.gov/pubs/sp/800/218/final
 - OWASP Top 10:2025: https://owasp.org/Top10/
+- Reglamento (UE) 2024/1689 de Inteligencia Artificial: https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81079&lang=es
+- AI Act, calendario de aplicación: https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai
+- Reglamento General de Protección de Datos: https://eur-lex.europa.eu/eli/reg/2016/679/oj
+- LOPDGDD, Ley Orgánica 3/2018: https://www.boe.es/buscar/act.php?id=BOE-A-2018-16673
+- Guías AEPD: https://www.aepd.es/guias-y-herramientas/guias
+- ENS, Real Decreto 311/2022: https://boe.es/buscar/act.php?id=BOE-A-2022-7191&lang=es&p=20241106&tn=6
+- AESIA, Real Decreto 729/2023: https://www.boe.es/eli/es/rd/2023/08/22/729
+- Directiva SRI 2 NIS2: https://www.boe.es/buscar/doc.php?id=DOUE-L-2022-81963
+- Reglamento de Ciberresiliencia: https://www.boe.es/buscar/doc.php?id=DOUE-L-2024-81720
+- CCN-STIC 884D servicios de IA: https://www.ccn-cert.cni.es/es/pdf/guias/series-ccn-stic/800-guia-esquema-nacional-de-seguridad?format=html&limit=25&limitstart=125
+- UNE-ISO/IEC 42001:2025: https://revista.une.org/81/tecnologia-de-la-informacion.-inteligencia-artificial.-siste.html
 
 ## Ficha de ejecución
 
