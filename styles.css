@@ -142,10 +142,11 @@ p {
 }
 
 h1 {
-  max-width: 12ch;
-  font-size: clamp(3.5rem, 9vw, 7.8rem);
-  line-height: 0.92;
+  max-width: 13ch;
+  font-size: clamp(3.2rem, 6.6vw, 6.6rem);
+  line-height: 0.95;
   letter-spacing: 0;
+  text-wrap: balance;
 }
 
 h2 {
@@ -289,9 +290,9 @@ img {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(320px, 0.86fr) minmax(420px, 1.14fr);
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   align-items: center;
-  gap: clamp(28px, 5vw, 70px);
+  gap: clamp(24px, 4vw, 58px);
   min-height: min(780px, calc(100dvh - 72px));
   padding: 58px 0 40px;
 }
@@ -299,6 +300,8 @@ img {
 .hero-copy {
   display: grid;
   gap: 24px;
+  max-width: 580px;
+  min-width: 0;
 }
 
 .eyebrow {
@@ -365,11 +368,15 @@ img {
 }
 
 .hero-visual {
-  position: relative;
-  min-height: 460px;
+  display: grid;
+  gap: 12px;
+  align-self: center;
+  min-width: 0;
+  min-height: 0;
 }
 
 .hero-visual img {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
@@ -380,18 +387,19 @@ img {
 }
 
 .hero-card {
-  position: absolute;
-  right: 18px;
-  bottom: 18px;
   display: grid;
   gap: 8px;
-  width: min(360px, calc(100% - 36px));
+  width: 100%;
   padding: 18px;
-  border: 1px solid color-mix(in srgb, var(--palette-light) 54%, transparent);
+  border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: color-mix(in srgb, var(--palette-ink) 88%, transparent);
-  color: var(--palette-light);
-  box-shadow: 0 16px 46px rgb(43 45 66 / 0.32);
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.hero-card strong {
+  line-height: 1.22;
 }
 
 .hero-card span,
@@ -403,7 +411,7 @@ img {
 }
 
 .hero-card p {
-  color: color-mix(in srgb, var(--palette-light) 76%, var(--palette-muted));
+  color: var(--muted);
 }
 
 .study-strip {
@@ -893,13 +901,26 @@ details p {
   transform: translateY(0);
 }
 
-@media (max-width: 1060px) {
+@media (max-width: 1180px) {
   .hero {
     grid-template-columns: 1fr;
     min-height: auto;
   }
 
+  .hero-copy {
+    max-width: 760px;
+  }
+
   .hero-visual {
+    width: 100%;
+    max-width: 920px;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 1060px) {
+  .hero {
+    grid-template-columns: 1fr;
     min-height: auto;
   }
 
@@ -993,19 +1014,6 @@ details p {
 
   .button {
     width: 100%;
-  }
-
-  .hero-card {
-    position: static;
-    width: 100%;
-    margin-top: 10px;
-    background: var(--surface);
-    color: var(--text);
-    box-shadow: none;
-  }
-
-  .hero-card p {
-    color: var(--muted);
   }
 
   .study-strip,
